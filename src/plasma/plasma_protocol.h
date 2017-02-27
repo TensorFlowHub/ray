@@ -4,15 +4,63 @@
 #include "common.h"
 #include "plasma.h"
 
-#include "format/plasma_builder.h"
-#include "format/plasma_reader.h"
+// #include "format/plasma_builder.h"
+// #include "format/plasma_reader.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* An argument to a function that a return value gets written to. */
 #define OUT
 
+typedef int32_t MessageType_enum_t;
+// __flatbuffers_define_integer_type(MessageType, MessageType_enum_t, 32)
+#define MessageType_PlasmaCreateRequest ((MessageType_enum_t)1L)
+#define MessageType_PlasmaCreateReply ((MessageType_enum_t)2L)
+#define MessageType_PlasmaSealRequest ((MessageType_enum_t)3L)
+#define MessageType_PlasmaSealReply ((MessageType_enum_t)4L)
+#define MessageType_PlasmaGetRequest ((MessageType_enum_t)5L)
+#define MessageType_PlasmaGetReply ((MessageType_enum_t)6L)
+#define MessageType_PlasmaReleaseRequest ((MessageType_enum_t)7L)
+#define MessageType_PlasmaReleaseReply ((MessageType_enum_t)8L)
+#define MessageType_PlasmaDeleteRequest ((MessageType_enum_t)9L)
+#define MessageType_PlasmaDeleteReply ((MessageType_enum_t)10L)
+#define MessageType_PlasmaStatusRequest ((MessageType_enum_t)11L)
+#define MessageType_PlasmaStatusReply ((MessageType_enum_t)12L)
+#define MessageType_PlasmaContainsRequest ((MessageType_enum_t)13L)
+#define MessageType_PlasmaContainsReply ((MessageType_enum_t)14L)
+#define MessageType_PlasmaConnectRequest ((MessageType_enum_t)15L)
+#define MessageType_PlasmaConnectReply ((MessageType_enum_t)16L)
+#define MessageType_PlasmaEvictRequest ((MessageType_enum_t)17L)
+#define MessageType_PlasmaEvictReply ((MessageType_enum_t)18L)
+#define MessageType_PlasmaFetchRequest ((MessageType_enum_t)19L)
+#define MessageType_PlasmaWaitRequest ((MessageType_enum_t)20L)
+#define MessageType_PlasmaWaitReply ((MessageType_enum_t)21L)
+#define MessageType_PlasmaSubscribeRequest ((MessageType_enum_t)22L)
+#define MessageType_PlasmaUnsubscribeRequest ((MessageType_enum_t)23L)
+#define MessageType_PlasmaDataRequest ((MessageType_enum_t)24L)
+#define MessageType_PlasmaDataReply ((MessageType_enum_t)25L)
+
+typedef int32_t PlasmaError_enum_t;
+// __flatbuffers_define_integer_type(PlasmaError, PlasmaError_enum_t, 32)
+#define PlasmaError_OK ((PlasmaError_enum_t)0L)
+#define PlasmaError_ObjectExists ((PlasmaError_enum_t)1L)
+#define PlasmaError_ObjectNonexistent ((PlasmaError_enum_t)2L)
+#define PlasmaError_OutOfMemory ((PlasmaError_enum_t)3L)
+
+typedef int32_t ObjectStatus_enum_t;
+// __flatbuffers_define_integer_type(ObjectStatus, ObjectStatus_enum_t, 32)
+#define ObjectStatus_Local ((ObjectStatus_enum_t)1L)
+#define ObjectStatus_Remote ((ObjectStatus_enum_t)2L)
+#define ObjectStatus_Nonexistent ((ObjectStatus_enum_t)3L)
+#define ObjectStatus_Transfer ((ObjectStatus_enum_t)4L)
+
+
 /* Protocol builder. */
 
-typedef flatcc_builder_t protocol_builder;
+// typedef flatcc_builder_t protocol_builder;
+typedef void protocol_builder;
 
 protocol_builder *make_protocol_builder(void);
 
@@ -251,5 +299,9 @@ void plasma_read_DataReply(uint8_t *data,
                            ObjectID *object_id,
                            int64_t *object_size,
                            int64_t *metadata_size);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PLASMA_PROTOCOL */

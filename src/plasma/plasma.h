@@ -16,6 +16,10 @@
 #include "utarray.h"
 #include "uthash.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Object request data structure. Used in the plasma_wait_for_objects()
  * argument.
@@ -133,5 +137,9 @@ typedef struct {
  * @return Void.
  */
 void warn_if_sigpipe(int status, int client_sock);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PLASMA_H */

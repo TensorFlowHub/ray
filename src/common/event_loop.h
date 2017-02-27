@@ -11,6 +11,10 @@
 #include "ae/ae.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Unique timer ID that will be generated when the timer is added to the
  * event loop. Will not be reused later on in another call
  * to event_loop_add_timer. */
@@ -97,5 +101,9 @@ void event_loop_run(event_loop *loop);
 
 /* Stop the event loop. */
 void event_loop_stop(event_loop *loop);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

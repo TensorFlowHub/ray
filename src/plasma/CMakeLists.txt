@@ -56,7 +56,7 @@ target_link_libraries(plasma ${COMMON_LIB} ${PYTHON_LIBRARIES} ${FLATBUFFERS_STA
 set_source_files_properties(thirdparty/dlmalloc.c PROPERTIES COMPILE_FLAGS -Wno-all)
 
 add_executable(plasma_store
-  plasma_store.c
+  plasma_store.cc
   plasma.c
   plasma_protocol.c
   eviction_policy.c
